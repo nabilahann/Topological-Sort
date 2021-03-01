@@ -153,6 +153,7 @@ public class Main13519097 {
         return sudah;
     }
 
+    // algoritma rekursif
     // algoritma topological sort yang akan digunakan untuk mencari urutan tiap
     // vertex/matakuliah
     static void TopologicalSort(int indegree[], int adjacencyMatrix[][], boolean visited[], String vertex[], 
@@ -163,7 +164,7 @@ public class Main13519097 {
 
         // akan dilakukan looping jika belum semua vertex/mata kuliah masuk ke dalam
         // urutan / memiliki urutan
-        while (!cekSudahSemua(visited) && !stop) {
+        if (!cekSudahSemua(visited) && !stop) {
             for (int i = 0; i < length; i++) {
                 if (indegree[i] == 0 && visited[i] == false) {
                     visited[i] = true;
@@ -179,19 +180,24 @@ public class Main13519097 {
             // artinya tidak ada vertex yang dapat dikeluarkan
             if (!valid) {
                 // menuliskan pesan tidak ada solusi
-                System.out.println("Solusi Tidak Dapat Ditemukan Karena Soal Tidak Valid (Terdapat Circle)");
+                System.out.println("Solusi Tidak Dapat Ditemukan Karena Soal Tidak Valid.");
                 stop = true;
+            } else {
+                //valid = false;
+                semester++;
+                // perbaiki nilai array indegree
+                inDegree(indegree, adjacencyMatrix, length);
+                TopologicalSort(indegree, adjacencyMatrix, visited, vertex, urutan, semester);
             }
-            valid = false;
-            semester++;
-            // perbaiki nilai array indegree
-            inDegree(indegree, adjacencyMatrix, length);
+            
+        } else {
+            // menuliskan solusi soal, jika ada
+            if (!stop) {
+                PrintSolusi(vertex, urutan, semester - 1);
+            }
         }
 
-        // menuliskan solusi soal, jika ada
-        if (!stop) {
-            PrintSolusi(vertex, urutan, semester - 1);
-        }
+        
     }
 
     public static void main(String args[]) {
