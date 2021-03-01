@@ -14,6 +14,6 @@ Contoh alamat file soal yang dapat diinputkan : Contoh1.txt atau /d:/Kuliah/Stim
 3. Kemudian program akan memproses persoalam dan akan ditampilkan urutan daftar kuliah yang dapat diambil berdasarkan semesternya.
 
 ## Author
-Nama    : Nabila Hannania
-NIM     : 13519097
-Kelas   : K02
+- Nama    : Nabila Hannania
+- NIM     : 13519097
+- Kelas   : K02
